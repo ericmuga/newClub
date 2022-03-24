@@ -15,7 +15,7 @@ import dayjs from 'dayjs'
  import Textarea from 'primevue/textarea';
 
 //  import Breadcrumb from 'primevue/breadcrumb';\
-import Breadcrumbs from '@/components/Navbars/Breadcrumbs.vue'
+import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import FileUpload from 'primevue/fileupload';
 import Pagination from '@/components/Pagination.vue'
 import SpacedRule from '@/components/SpacedRule.vue'
