@@ -176,6 +176,7 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        Creativeorange\Gravatar\GravatarServiceProvider::class
 
     ],
 
@@ -191,6 +192,7 @@ return [
     */
 
     'aliases' => Facade::defaultAliases()->merge([
+        'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
         // ...
     ])->toArray(),
 

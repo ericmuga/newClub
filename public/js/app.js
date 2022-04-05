@@ -19350,14 +19350,19 @@ var navigation = [{
     var showToast = (0,vue__WEBPACK_IMPORTED_MODULE_2__.ref)(false);
     var comp = (0,vue__WEBPACK_IMPORTED_MODULE_2__.computed)(function () {
       return (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.usePage)().component.value;
-    }); //   onMounted(()=>{
+    });
+    var user = (0,vue__WEBPACK_IMPORTED_MODULE_2__.computed)(function () {
+      return (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.usePage)().props.value.auth.user;
+    }); // onMounted(()=>console.log(comp))
+    //   onMounted(()=>{
     //          showToast=true
     //          setTimeout(showToast=false,1000);
     //   });
 
     return {
       navigation: navigation,
-      comp: comp //showToast
+      comp: comp,
+      user: user //showToast
 
     };
   }
@@ -19645,27 +19650,24 @@ var _hoisted_9 = ["href", "aria-current"];
 var _hoisted_10 = {
   "class": "absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
 };
+var _hoisted_11 = {
+  key: 0
+};
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "sr-only"
 }, "Open user menu", -1
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
-  "class": "w-8 h-8 rounded-full",
-  src: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-  alt: ""
-}, null, -1
-/* HOISTED */
-);
+var _hoisted_13 = ["src"];
 
-var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Sign out ");
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Sign out ");
 
-var _hoisted_14 = {
+var _hoisted_15 = {
   "class": "px-2 pt-2 pb-3 space-y-1"
 };
-var _hoisted_15 = {
+var _hoisted_16 = {
   "class": "grid w-full h-full p-5 border-2 rounded-lg shadow-lg shadow-slate-400 place-items-center"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -19732,16 +19734,22 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "relative ml-3"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuButton, {
+          return [$setup.user ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_11, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_MenuButton, {
             "class": "flex text-sm bg-gray-800 rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-800 focus:ring-white"
           }, {
             "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-              return [_hoisted_11, _hoisted_12];
+              return [_hoisted_12, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+                "class": "w-8 h-8 rounded-full",
+                src: $setup.user.gravatar,
+                alt: ""
+              }, null, 8
+              /* PROPS */
+              , _hoisted_13)];
             }),
             _: 1
             /* STABLE */
 
-          })]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
+          })])) : (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("v-if", true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(vue__WEBPACK_IMPORTED_MODULE_0__.Transition, {
             "enter-active-class": "transition duration-100 ease-out",
             "enter-from-class": "transform scale-95 opacity-0",
             "enter-to-class": "transform scale-100 opacity-100",
@@ -19789,7 +19797,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
                         "class": (0,vue__WEBPACK_IMPORTED_MODULE_0__.normalizeClass)([active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700'])
                       }, {
                         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-                          return [_hoisted_13];
+                          return [_hoisted_14];
                         }),
                         _: 2
                         /* DYNAMIC */
@@ -19820,7 +19828,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         "class": "sm:hidden"
       }, {
         "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.navigation, function (item) {
+          return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($setup.navigation, function (item) {
             return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)(_component_DisclosureButton, {
               key: item.name,
               as: "Link",
@@ -19851,7 +19859,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <transition name=\"toast\">\n    <div v-if=\"$page.props.flash.message!='' &&showToast\"\n                    class=\"fixed flex px-4 py-2 mt-1 text-sm font-light tracking-wide rounded-lg right-4 top-16\"\n                    :class=\"$page.props.flash.type==='success'?'bg-green-400':'bg-red-400'\"\n            >\n                {{ $page.props.flash.message }}\n    </div>\n  </transition> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_15, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("footer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FooterAdmin)], 64
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <transition name=\"toast\">\n    <div v-if=\"$page.props.flash.message!='' &&showToast\"\n                    class=\"fixed flex px-4 py-2 mt-1 text-sm font-light tracking-wide rounded-lg right-4 top-16\"\n                    :class=\"$page.props.flash.type==='success'?'bg-green-400':'bg-red-400'\"\n            >\n                {{ $page.props.flash.message }}\n    </div>\n  </transition> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.renderSlot)(_ctx.$slots, "default")]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)("footer "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_FooterAdmin)], 64
   /* STABLE_FRAGMENT */
   );
 }

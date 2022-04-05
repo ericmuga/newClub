@@ -5,6 +5,7 @@ namespace App\Providers;
 use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
+use Creativeorange\Gravatar\Facades\Gravatar;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
         Inertia::share('appName', config('app.name'));
 
         Inertia::share('auth.user', fn (Request $request) => $request->user()
-            ? $request->user()->only('id', 'name', 'email')
+            ? array_merge($request->user()->only('id', 'name', 'email'),['gravatar'=>Gravatar::get($request->user()->email)])
             : null
         );
     }
