@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <!-- <div>
        <Breadcrumbs :breadcrumbs="breadcrumbs"/>
-    </div>
+    </div> -->
 
     <!-- <div class="grid gap-2 md:grid-cols-1 bg-[url('/images/cow3.png')]"> -->
     <div class="grid gap-2 md:grid-cols-1 ">
@@ -12,7 +12,7 @@
     </div> -->
      <div class="grid min-h-screen col-span-1 place-items-center sm:-mt-8 sm:col-span-1 ">
      <div class="p-4 border-2 rounded-lg border-slate-400 ">
-         <div class="w-full p-2 mb-2 text-center uppercase bg-slate-400 rounded">
+         <div class="w-full p-2 mb-2 text-center uppercase rounded bg-slate-400">
              Register
          </div>
          <form  @submit.prevent="submit">
@@ -59,7 +59,7 @@
                     <span class="p-inputgroup-addon">
                         <i class="pi pi-key"></i>
                     </span>
-                    <Dropdown v-model="form.field_id"
+                    <Dropdown v-model="form.field"
                              :options="fields"
                              optionLabel="name"
                              optionValue="id"
@@ -70,21 +70,7 @@
                 </div>
                 <div class="my-2 text-slate-400"><hr></div>
 
-                 <!-- <div class="p-inputgroup">
-                    <span class="p-inputgroup-addon">
-                        <i class="pi pi-key"></i>
-                    </span>
-                    <Dropdown v-model="form.type_id"
-                             :options="usertypes"
-                             optionLabel="name"
-                             optionValue="id"
-                             :filter="true"
-                             placeholder="Select a User Type"
-                             :showClear="true"
-                    />
-                </div> -->
 
-                <!-- <div class="my-2 text-slate-400"><hr></div> -->
 
 
                 <div class="flex justify-center space-x-2 p-inputgroup ">
@@ -96,33 +82,30 @@
                             type="submit"
                             :disabled="(form.name===null)||(form.email===null)||(form.password===null)||(form.processing)"
                             />
-                   <!-- <Link href="users/create">
-                     <Button label="Register" icon="pi pi-book" class="rounded-sm p-button-info"/>
-                  </Link> -->
+                 </div>
 
-                </div>
 
-                <!-- <div class="p-inputgroup ">
-
-                </div> -->
          </form>
      </div>
     </div>
+    <!-- <Footer /> -->
     </div>
 </template>
 
 <script>
     import { ref, reactive } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3'
+import Footer from '@/components/Footer';
+import { usePage } from '@inertiajs/inertia-vue3'
 
     export default {
         props:{
             breadcrumbs:Object,
             errors:Object,
-            // fields:Object,
-            // usertypes:Object,
-            },
-
+           },
+       components:{
+           Footer,
+       },
 
 
         setup(props, context) {
@@ -141,13 +124,13 @@ import { useForm } from '@inertiajs/inertia-vue3'
                                  {id:11, name:'Security'}
                          ];
                const form=useForm({
-                email:null,
-                password:null,
-                field:null,
-                phone:null,
-                name:null,
-                // type_id:null
-            })
+                                    email:null,
+                                    password:null,
+                                    field:null,
+                                    phone:null,
+                                    name:null,
+                                    // type_id:null
+                                })
 
             const errors=props.errors;
 

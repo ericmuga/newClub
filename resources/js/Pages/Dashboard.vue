@@ -6,9 +6,9 @@
 
 <script>
     import { ref, reactive } from 'vue';
-    import Layout from '@/Layouts/Admin'
+    // import Layout from '@/Layouts/Admin'
     export default {
-        layout:layout,
+        // layout:layout,
         setup(props, context) {
            return{
 

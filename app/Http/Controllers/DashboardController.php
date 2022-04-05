@@ -8,6 +8,8 @@ class DashboardController extends Controller
 {
     public function index(Request $request)
     {
+
+    //    dd('here');
         return inertia('Dashboard');
     }
 }

@@ -21,14 +21,20 @@ import Pagination from '@/components/Pagination.vue'
 import SpacedRule from '@/components/SpacedRule.vue'
 import MultiSelect from 'primevue/multiselect';
 import InputNumber from 'primevue/inputnumber';
-
+// import Checkbox from 'primevue/checkbox';
+import Layout from '@/Layouts/Admin'
 
 import route from "ziggy-js";
 import ToastService from 'primevue/toastservice';
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
-    resolve: (name) => require(`./Pages/${name}.vue`),
+    resolve: name=>{
+                      let page= require(`./Pages/${name}`).default;
+                      page.layout??=Layout;
+                      return page;
+                     },
+
     setup({ el, app, props, plugin }) {
         const VueApp = createApp({ render: () => h(app, props) });
 

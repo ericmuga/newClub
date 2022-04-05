@@ -12,7 +12,7 @@ Route::post('logout',[AuthController::class,'logout'])->name('logout');
 Route::get('register',fn()=>inertia('Auth/Register'))->name('register')->breadcrumbs('User Registration');
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/',[DashboardController::class,'index'])
+    Route::get('/dashboard',[DashboardController::class,'index'])
          ->name('dashboard')
          ->breadcrumbs('dashboard');
 

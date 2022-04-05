@@ -7,8 +7,12 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-    public function create ()
+    public function create (Request $request)
     {
+
+
+                session()->flash('flash.message', 'User Created successfully');
+                session()->flash('flash.type','success');
         if (!Auth::check())
         {
             return inertia('Auth/Login');
@@ -18,7 +22,7 @@ class AuthController extends Controller
 
     public function store (Request $request)
     {
-        //    dd($request);
+           //dd($request->all());
             $credentials = $request->validate([
                 'email' => ['required', 'email'],
                 'password' => ['required'],
@@ -45,7 +49,7 @@ class AuthController extends Controller
 
                 $request->session()->regenerateToken();
 
-                return redirect('/');
+                return redirect('login');
             }
 
 }

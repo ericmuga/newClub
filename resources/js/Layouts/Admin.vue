@@ -45,7 +45,12 @@
                   <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Settings</a>
                 </MenuItem>
                 <MenuItem v-slot="{ active }">
-                  <a href="#" :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']">Sign out</a>
+                  <Link href="/logout"
+                        method="post"
+                        :class="[active ? 'bg-gray-100' : '', 'block px-4 py-2 text-sm text-gray-700']"
+                  >
+                    Sign out
+                </Link>
                 </MenuItem>
               </MenuItems>
             </transition>
@@ -60,10 +65,17 @@
       </div>
     </DisclosurePanel>
   </Disclosure>
+  <!-- <transition name="toast">
+    <div v-if="$page.props.flash.message!='' &&showToast"
+                    class="fixed flex px-4 py-2 mt-1 text-sm font-light tracking-wide rounded-lg right-4 top-16"
+                    :class="$page.props.flash.type==='success'?'bg-green-400':'bg-red-400'"
+            >
+                {{ $page.props.flash.message }}
+    </div>
+  </transition> -->
+
    <div class="grid w-full h-full p-5 border-2 rounded-lg shadow-lg shadow-slate-400 place-items-center">
-        <div v-if="$page.props.flash.message" class="alert">
-        {{ $page.props.flash.message }}
-      </div>
+
       <slot/>
 
    </div>
@@ -74,19 +86,19 @@
 <script>
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/vue'
 import { BellIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
-import FooterAdmin from '@/components/FooterAdmin.vue'
+import FooterAdmin from '@/components/Footer.vue'
 import { onMounted } from '@vue/runtime-core'
 import { usePage } from '@inertiajs/inertia-vue3'
-import { computed } from 'vue'
+import { computed,ref } from 'vue'
 
 const navigation = [
   { name: 'Dashboard', href: route('dashboard'), current:false,component:'Dashboard/Index' },
-  { name: 'Reports', href: route('reports.index'), current: false,component:'Reports/Index' },
-  { name: 'Totals', href: route('totals.index'), current: false,component:'Totals/Index' },
+//   { name: 'Reports', href: route('reports.index'), current: false,component:'Reports/Index' },
+//   { name: 'Totals', href: route('totals.index'), current: false,component:'Totals/Index' },
 //   { name: 'GrandTotals', href:route('grandtotals.index'), current: false,component:'GrandTotals/Index' },
-  { name: 'Subtotals', href:route('subtotals.index'), current: false,component:'Subtotals/Index' },
-  { name: 'Accounts', href:route('accounts.index'), current: false,component:'Accounts/Index' },
-  { name: 'Account Entries', href: route('accountentries.index'), current: false,component:'AccountEntries/Index' },
+//   { name: 'Subtotals', href:route('subtotals.index'), current: false,component:'Subtotals/Index' },
+//   { name: 'Accounts', href:route('accounts.index'), current: false,component:'Accounts/Index' },
+//   { name: 'Account Entries', href: route('accountentries.index'), current: false,component:'AccountEntries/Index' },
 ]
 
 export default {
@@ -107,11 +119,32 @@ export default {
 
   setup() {
 
+       const showToast=ref(false);
         const comp = computed(() => usePage().component.value)
-    //   onMounted(()=>{console.log(comp.value)})
+
+    //   onMounted(()=>{
+
+    //          showToast=true
+    //          setTimeout(showToast=false,1000);
+    //   });
+
     return {
-      navigation,comp
+      navigation,comp,//showToast
     }
   },
 }
 </script>
+<style>
+    /* enter */
+    .toast-enter-from{
+        opacity: 0;
+        transform: translateY(-60px);
+    }
+    .toast-enter-to{
+        opacity: 1;
+        transform: translateY(0px);
+    }
+    .toast-enter-active{
+        transition: all 0.3s ease;
+    }
+</style>

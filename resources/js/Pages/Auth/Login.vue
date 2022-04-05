@@ -1,38 +1,50 @@
 <template>
     <div class="grid min-h-screen place-items-center">
        <div class="w-full max-w-xs">
-  <form class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" @submit.prevent="submit">
+  <form class="px-8 pt-6 pb-8 mb-4 bg-white rounded shadow-md" @submit.prevent="submit">
+      <div class="w-full p-3 mb-2 font-light tracking-wide text-center text-white uppercase rounded-lg shadow-sm bg-slate-500">Club Manager</div>
     <div class="mb-4">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="username">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="username">
         Username
       </label>
       <input
       v-model="form.email"
 
-      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
-    <p class="text-red-500 text-xs italic" v-if="errors.email">{{errors.email}}</p>
+      class="w-full px-3 py-2 leading-tight text-gray-700 border rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="username" type="text" placeholder="Username">
+    <p class="text-xs italic text-red-500" v-if="errors.email">{{errors.email}}</p>
     </div>
     <div class="mb-6">
-      <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
         Password
       </label>
       <input
        v-model="form.password"
-      class="shadow appearance-none border border-red-500 rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
-      <p class="text-red-500 text-xs italic" v-if="errors.password">{{errors.password}}</p>
+      class="w-full px-3 py-2 mb-3 leading-tight text-gray-700 border border-red-500 rounded shadow appearance-none focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
+      <p class="text-xs italic text-red-500" v-if="errors.password">{{errors.password}}</p>
     </div>
+
+    <div class="mb-6">
+      <label class="block mb-2 text-sm font-bold text-gray-700" for="password">
+        Remember Me
+      </label>
+      <Checkbox
+       v-model="form.remember"
+       binary=true />
+      </div>
+
+
     <div class="flex items-center justify-between">
-      <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit">
+      <button class="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700 focus:outline-none focus:shadow-outline" type="submit">
         Sign In
       </button>
-      <a class="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800" href="#">
+      <a class="inline-block text-sm font-bold text-blue-500 align-baseline hover:text-blue-800" href="#">
         Forgot Password?
       </a>
     </div>
+
+
   </form>
-  <p class="text-center text-gray-500 text-xs">
-    &copy;2020 Acme Corp. All rights reserved.
-  </p>
+
 </div>
     </div>
 </template>
@@ -40,6 +52,7 @@
 <script>
 import { ref, reactive } from 'vue';
 import { useForm } from '@inertiajs/inertia-vue3'
+// import moduleName from '@/components/Footer';
     export default {
    props:{errors:Object},
    setup(props, context) {
@@ -49,6 +62,7 @@ import { useForm } from '@inertiajs/inertia-vue3'
                                     password:null,
                                     remember:false,
                                 })
+            let thisYear =  new Date().getFullYear()
 
             //const errors=props.errors;
 
@@ -57,7 +71,7 @@ import { useForm } from '@inertiajs/inertia-vue3'
                form.post(route('login.store'))
              }
             return {
-                form,submit
+                form,submit,thisYear
             }
         }
     }
