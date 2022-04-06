@@ -2,6 +2,8 @@ import { createApp, h } from 'vue'
 import { createInertiaApp, Link } from '@inertiajs/inertia-vue3'
 import { InertiaProgress } from '@inertiajs/progress'
 import dayjs from 'dayjs'
+
+    import gsap from 'gsap';
  import PrimeVue from 'primevue/config'
  import InputText from 'primevue/inputtext'
  import Toast from 'primevue/toast'
@@ -13,7 +15,7 @@ import dayjs from 'dayjs'
  import Dropdown from 'primevue/dropdown';
  import Checkbox from 'primevue/checkbox';
  import Textarea from 'primevue/textarea';
-
+ import Card from 'primevue/card';
 //  import Breadcrumb from 'primevue/breadcrumb';\
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import FileUpload from 'primevue/fileupload';
@@ -44,6 +46,7 @@ createInertiaApp({
              .component("Link",Link)
             .use(PrimeVue)
             .use(ToastService)
+            .use(gsap)
             .component('InputText',InputText)
             .component('Button',Button)
             .component('Dropdown',Dropdown)
@@ -58,6 +61,7 @@ createInertiaApp({
             .component('FileUpload',FileUpload)
             .component('Textarea',Textarea)
             .component('InputNumber',InputNumber)
+            .component('Card',Card)
             .mixin({ methods: { route } })
             .mount(el);
     },
