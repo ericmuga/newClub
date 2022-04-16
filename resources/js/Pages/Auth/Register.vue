@@ -126,7 +126,7 @@ import { usePage } from '@inertiajs/inertia-vue3'
                const form=useForm({
                                     email:null,
                                     password:null,
-                                    field:null,
+                                    field_id:null,
                                     phone:null,
                                     name:null,
                                     // type_id:null

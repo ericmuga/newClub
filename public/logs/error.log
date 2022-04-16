@@ -1,0 +1,8 @@
+[Thu Apr 07 14:17:02.097330 2022] [ssl:warn] [pid 28248:tid 628] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Apr 07 14:17:02.118248 2022] [ssl:warn] [pid 28248:tid 628] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Apr 07 14:17:02.347137 2022] [ssl:warn] [pid 25048:tid 660] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Apr 07 14:17:02.366696 2022] [ssl:warn] [pid 25048:tid 660] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Apr 07 15:09:23.593504 2022] [ssl:warn] [pid 32624:tid 632] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Apr 07 15:09:23.625025 2022] [ssl:warn] [pid 32624:tid 632] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Apr 07 15:09:23.838320 2022] [ssl:warn] [pid 28968:tid 644] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name
+[Thu Apr 07 15:09:23.862569 2022] [ssl:warn] [pid 28968:tid 644] AH01909: localhost:443:0 server certificate does NOT include an ID which matches the server name

@@ -3,7 +3,7 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{AuthController,DashboardController};
+use App\Http\Controllers\{AuthController,DashboardController,ZoomController};
 
 //authentication
 Route::get('/login',[AuthController::class,'create'])->name('login');
@@ -17,4 +17,6 @@ Route::middleware(['auth'])->group(function () {
          ->breadcrumbs('dashboard');
 
 });
+
+Route::get('/',fn()=>ZoomController::list_meetings());
 

@@ -9,12 +9,13 @@
         >
 
         <section class="grid gap-2 md:grid-cols-2 sm:grid-cols-1">
-            <div class="col-span-1 card">
+            <div class="col-span-1 rounded-lg shadow-md border-slate-200 card hover:shadow shadow-slate-400 hover:border-2">
                <Card style="width: 25em">
 
                     <template #title >
-                      <div class="text-center">
+                      <div class="text-center text-slate-600">
                           Members
+                         <UsersIcon class="w-5 h-5 text-center text-slate-600"/>
                       </div>
                     </template>
                     <template #subtitle>
@@ -36,12 +37,13 @@
                     </template>
                 </Card>
             </div>
-            <div class="col-span-1 card">
+            <div class="col-span-1 border-blue-200 rounded-lg shadow-md card hover:shadow shadow-blue-400 hover:border-2">
                <Card style="width: 25em">
 
                     <template #title >
-                      <div class="text-center">
+                      <div class="text-center text-blue-500">
                           Meetings
+                      <CollectionIcon class="w-5 h-5 text-center text-blue-500"/>
                       </div>
                     </template>
                     <template #subtitle>
@@ -64,21 +66,22 @@
 
                 </Card>
             </div>
-            <div class="col-span-1 card">
-                <Card style="width: 25em">
+            <div class="col-span-1 border-teal-200 rounded-lg shadow-md card hover:shadow shadow-slate-400 hover:border-2">
+                <Card style="width: 25em" >
 
                     <template #title >
-                      <div class="text-center">
-                          Makeups
+                      <div class="text-center text-teal-600">
+                          Guests
+                         <UsersIcon class="w-5 h-5 text-center text-teal-600"/>
                       </div>
                     </template>
                     <template #subtitle>
-                          Makeup Details
+                        Guests Details
                     </template>
                     <template #content>
-                      Makeups
+                     Some More details..
                      </template>
-                      <template #footer>
+                    <template #footer>
                         <div class="text-center">
                             <Link
                               href="#"
@@ -89,15 +92,15 @@
 
                         </div>
                     </template>
-
                 </Card>
             </div>
-            <div class="col-span-1 card">
+            <div class="col-span-1 rounded-lg shadow-md border-amber-200 card hover:shadow shadow-amber-400 hover:border-2">
                 <Card style="width: 25em">
 
                     <template #title >
-                      <div class="text-center">
+                      <div class="text-center text-amber-700">
                          Settings
+                        <CogIcon class="w-5 h-5 text-amber-700"/>
                       </div>
                     </template>
                     <template #subtitle>
@@ -130,11 +133,13 @@
 
 <script>
     import { ref, reactive } from 'vue';
-    // import gsap from 'gsap'
+    import { UsersIcon,CollectionIcon,CogIcon } from '@heroicons/vue/solid'
+
+    import gsap from 'gsap'
     // import Layout from '@/Layouts/Admin'
     export default {
         // layout:layout,
-
+components: { UsersIcon,CollectionIcon,CogIcon },
         setup(props, context) {
            const beforeEnter=(el)=>{
             //    console.log('set the initial state')

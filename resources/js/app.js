@@ -16,6 +16,7 @@ import dayjs from 'dayjs'
  import Checkbox from 'primevue/checkbox';
  import Textarea from 'primevue/textarea';
  import Card from 'primevue/card';
+//  import DataView from 'primevue/dataview';
 //  import Breadcrumb from 'primevue/breadcrumb';\
 import Breadcrumbs from '@/components/Breadcrumbs.vue'
 import FileUpload from 'primevue/fileupload';
@@ -62,6 +63,8 @@ createInertiaApp({
             .component('Textarea',Textarea)
             .component('InputNumber',InputNumber)
             .component('Card',Card)
+            // .component('DataView',DataView)
+
             .mixin({ methods: { route } })
             .mount(el);
     },
