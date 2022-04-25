@@ -13,13 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('attendables', function (Blueprint $table) {
-            // $table->id();
-            $table->primary(['type','type_id','attendable_id','attendable_type']);
-            $table->string('type');
-            $table->unsignedBigInteger('type_id');
-            $table->unsignedBigInteger('attendable_id');
-            $table->string('attendable_type');
+        Schema::create('attendees', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -31,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attendables');
+        Schema::dropIfExists('attendees');
     }
 };

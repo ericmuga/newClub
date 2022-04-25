@@ -17,10 +17,11 @@ class CreateGuestsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->string('phone')->unique();
-            $table->enum('gender',['m','f']);
-            $table->unsignedInteger('field_id');
-            $table->unsignedInteger ('club_id');
+            $table->string('phone')->unique()->nullable();
+            $table->enum('gender',['m','f'])->nullable();
+            $table->enum('type',['rotarian','rotaractor','guest','prospective_inductee'])->nullable();
+            $table->unsignedInteger('field_id')->nullable();
+            $table->unsignedInteger ('club_id')->nullable();
             $table->timestamps();
         });
     }

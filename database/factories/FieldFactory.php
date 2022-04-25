@@ -17,7 +17,8 @@ class FieldFactory extends Factory
     public function definition()
     {
         return [
-            //
+            'name'=>$this->faker->job()->unique(),
+            'description'=>$this->faker->sentence()
         ];
     }
 }
