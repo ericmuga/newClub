@@ -14,12 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('attendables', function (Blueprint $table) {
-            // $table->id();
-            $table->primary(['type','type_id','attendable_id','attendable_type']);
-            $table->string('type');
-            $table->unsignedBigInteger('type_id');
-            $table->unsignedBigInteger('attendable_id');
-            $table->string('attendable_type');
+            $table->id();
             $table->timestamps();
         });
     }

@@ -17,9 +17,7 @@ class ClubFactory extends Factory
     public function definition()
     {
         return [
-            'name'=>$this->faker->word(),
-            'description'=>$this->faker->sentence(),
-            'district'=>$this->faker->city()
+            //
         ];
     }
 }

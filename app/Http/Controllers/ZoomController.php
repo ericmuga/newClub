@@ -2,13 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Instance;
 use Illuminate\Http\Request;
 use Firebase\JWT\JWT;
 use Firebase\JWT\Key;
 use GuzzleHttp\Client;
 use App\Models\Meeting;
-use Illuminate\Support\Carbon;
 
 class ZoomController extends Controller
 {
@@ -19,8 +17,7 @@ class ZoomController extends Controller
             $key = env('JWT_APP_SECRET','');
             $payload = array(
                 "iss" =>env('JWT_APP_KEY',''),
-                "exp" =>1681638780,
-                // "exp" =>date_create('0:53 04/16/2023')->format('U'),
+                "exp" =>1649938980,
             );
 
            return JWT::encode($payload, $key,'HS256');
@@ -65,12 +62,7 @@ public static function list_meetings($next_page_token = '') {
     ];
 
     if (!empty($next_page_token)) {
-        $arr_request['query'] = [
-
-                                  "next_page_token" => $next_page_token,
-                                  "type"=>'scheduled',
-
-                                ];
+        $arr_request['query'] = ["next_page_token" => $next_page_token];
     }
 
     $response = $client->request('GET', '/v2/users/me/meetings/?type=scheduled&from=2022-03-01&to=2022-03-31', $arr_request);
@@ -79,35 +71,32 @@ public static function list_meetings($next_page_token = '') {
 
     if ( !empty($data) ) {
         foreach ( $data->meetings as $d ) {
-            //fetch instances of that meeting
 
-                    $arr_request2 = [
-                            "headers" => [
-                                "Authorization" => "Bearer ".ZoomController::getZoomAccessToken()
-                            ]
-                        ];
-                    $client2 = new Client(['base_uri' => 'https://api.zoom.us']);
-                    $response2 = $client2->request('GET', '/v2/past_meetings/'.$d->id.'/instances', $arr_request2);
-                    $data2 = json_decode($response2->getBody());
-                    foreach($data2->meetings as $i)
-                    {
-                        if(!Instance::where('uuid',$i->uuid)
-                                    ->where('meeting_id',$d->id)
-                                    ->exists()
-                          )
-                        // Carbon::parse($participant["leave_time"])->timezone('Africa/Nairobi');
-                        Instance::create(['meeting_id'=>$d->id,
-                                          'uuid'=>$i->uuid,
-                                          'start_time'=>Carbon::parse($i->start_time)->timezone('Africa/Nairobi')]);
-                    }
+            //populate the list of meetings here
+
+            /*
+                "agenda": "My Meeting",
+                "created_at": "2022-03-23T05:31:16Z",
+                "duration": 60,
+                "host_id": "30R7kT7bTIKSNUFEuH_Qlg",
+                "id": 97763643886,
+                "join_url": "https://example.com/j/11111",
+                "pmi": "97891943927",
+                "start_time": "2022-03-23T06:00:00Z",
+                "timezone": "America/Los_Angeles",
+                "topic": "My Meeting",
+                "type": 2,
+                "uuid": "aDYlohsHRtCd4ii1uC2+hA=="
+
+            */
             if(!Meeting::where('meeting_id',$d->id)->exists())
                 Meeting::create([
                     'topic'=>$d->topic?:'',
                     'meeting_id'=>$d->id?:0,
                     'uuid'=>((str_contains($d->uuid,'/'))?urlencode(urlencode($d->uuid)):$d->uuid)?:'',
                     ]);
-            if ( !empty($data->next_page_token) ) {
-                ZoomController::list_meetings($data->next_page_token);
+           if ( !empty($data->next_page_token) ) {
+            ZoomController::list_meetings($data->next_page_token);
 
 
     }

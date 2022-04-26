@@ -6,7 +6,7 @@ use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Creativeorange\Gravatar\Facades\Gravatar;
-use Illuminate\Database\Eloquent\Relations\Relation;
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -37,12 +37,5 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-
-
-        Relation::enforceMorphMap([
-            'instance' => 'App\Models\Instance',
-            'makeup' => 'App\Models\MakeUp',
-
-        ]);
     }
 }

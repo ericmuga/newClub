@@ -13,10 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('instances', function (Blueprint $table)
-        {
+        Schema::create('instances', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('meeting_id');
             $table->string('uuid')->unique();
             $table->dateTimeTz('start_time')->nullable();
             $table->dateTimeTz('end_time')->nullable();
