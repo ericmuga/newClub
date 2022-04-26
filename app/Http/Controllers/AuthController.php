@@ -32,7 +32,7 @@ class AuthController extends Controller
             if (Auth::attempt($credentials,$request->remember)) {
                 $request->session()->regenerate();
 
-                return redirect()->intended('dashboard');
+                return redirect()->intended();
             }
 
 
@@ -49,7 +49,7 @@ class AuthController extends Controller
 
                 $request->session()->regenerateToken();
 
-                return redirect('login');
+                return redirect()->back();
             }
 
 }
