@@ -27,7 +27,7 @@
                     <template #footer>
                         <div class="text-center">
                             <Link
-                              href="#"
+                              :href="route('members.index')"
                             >
                                <Button icon="pi pi-book" label="Explore"  />
                             </Link>

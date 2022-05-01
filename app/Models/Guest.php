@@ -14,4 +14,8 @@ class Guest extends Model
 
 
 
+    public function attendee()
+    {
+        return $this->morphOne(Attendee::class,'attendable');
+    }
 }

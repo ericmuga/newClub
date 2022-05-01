@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Http\Controllers\ZoomController;
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -18,7 +19,9 @@ class DatabaseSeeder extends Seeder
 
         $this->call([
                   FieldSeeder::class,
-                  UserSeeder::class
+                  ClubSeeder::class,
+                  UserSeeder::class,
+                  MemberSeeder::class,
               ]);
 
 

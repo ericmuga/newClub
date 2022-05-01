@@ -16,8 +16,16 @@ class FieldFactory extends Factory
      */
     public function definition()
     {
+        // Schema::create('fields', function (Blueprint $table) {
+        //     $table->bigIncrements('id');
+        //     $table->string('name')->unique();
+        //     $table->string('description')->nullable();
+        //     $table->timestamps();
+        // });
         return [
-            //
+                'name'=>$this->faker->unique()->word(),
+                'description'=>$this->faker->sentence(),
+
         ];
     }
 }

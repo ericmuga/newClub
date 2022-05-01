@@ -26,6 +26,7 @@ import MultiSelect from 'primevue/multiselect';
 import InputNumber from 'primevue/inputnumber';
 // import Checkbox from 'primevue/checkbox';
 import Layout from '@/Layouts/Admin'
+// import gsap from 'gsap';
 
 import route from "ziggy-js";
 import ToastService from 'primevue/toastservice';
@@ -46,6 +47,7 @@ createInertiaApp({
         VueApp.use(plugin)
              .component("Link",Link)
             .use(PrimeVue)
+            // .use(InertiaProgress)
             .use(ToastService)
             .use(gsap)
             .component('InputText',InputText)

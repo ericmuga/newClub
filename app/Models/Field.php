@@ -9,9 +9,19 @@ class Field extends Model
 {
     use HasFactory;
 
-  public function users()
-  {
-    return $this->hasMany(User::class);
-  }
+    protected $fillable=['name','description'];
+
+    public function users()
+    {
+
+        return $this->hasMany(User::class);
+    }
+
+  public function members()
+    {
+
+        return $this->hasMany (Member::class);
+    }
+
 
 }

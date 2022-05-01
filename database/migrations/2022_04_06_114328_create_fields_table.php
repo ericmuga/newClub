@@ -17,7 +17,7 @@ class CreateFieldsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name')->unique();
             $table->string('description')->nullable();
-            $table->timestamps();
+            // $table->timestamps();
         });
     }
 

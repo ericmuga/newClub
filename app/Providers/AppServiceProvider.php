@@ -6,7 +6,8 @@ use Illuminate\Support\ServiceProvider;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Creativeorange\Gravatar\Facades\Gravatar;
-
+use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Database\Eloquent\Relations\Relation;
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -36,6 +37,12 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+
+        Relation::enforceMorphMap([
+            'member' => 'App\Models\Member',
+            'guest' => 'App\Models\Guest',
+        ]);
+
+        JsonResource::withoutWrapping();
     }
 }

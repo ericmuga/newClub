@@ -176,7 +176,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        Creativeorange\Gravatar\GravatarServiceProvider::class
+        Creativeorange\Gravatar\GravatarServiceProvider::class,
+        Maatwebsite\Excel\ExcelServiceProvider::class,
 
     ],
 
@@ -193,6 +194,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         'Gravatar' => 'Creativeorange\Gravatar\Facades\Gravatar',
+        'Excel' => Maatwebsite\Excel\Facades\Excel::class,
         // ...
     ])->toArray(),
 

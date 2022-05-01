@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('meetings', function (Blueprint $table) {
+        Schema::create('attendees', function (Blueprint $table) {
             $table->id();
-            $table->string('uuid')->nullable();
-            $table->unsignedBigInteger('meeting_id')->unique();
-            $table->string('topic')->nullable();
+            $table->morphs('attendable');
+            $table->unique(['id','attendable_type','attendable_id']);
             $table->timestamps();
         });
     }
@@ -29,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('meetings');
+        Schema::dropIfExists('attendees');
     }
 };

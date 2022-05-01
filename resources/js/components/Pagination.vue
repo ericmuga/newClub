@@ -2,7 +2,13 @@
     <div>
         <!--pagination -->
         <div class="p-3 mt-6 text-black">
-            <Link v-for="link in links" v-html="link.label" :href="link.url" :key="link.url" preserveScroll class="p-2 border-2 border-white border-sm hover:bg-slate-200 hover:font-bold" >
+            <Link     v-for="link in links" :key=link.url
+                      v-html="link.label"
+                      :href="`${resource}/${link.url}`"
+                      :class="{'text-slate-500 hover:bg-none':!link.url,'font-bold underline':link.active}"
+                      preserveScroll
+                      class="p-2 border-2 border-white border-sm hover:bg-slate-200 hover:font-bold"
+                      >
             </Link>
         </div>
     </div>
@@ -10,24 +16,20 @@
 
 <script>
 export default {
-    name: 'FinignitePagination',
     props:{
         links:Object,
+        resource:String,
     },
+   setup(props){
 
-    data() {
+    //    const resource= props.resource.value
+    //    const appendURL=(link)=>(`${resource}/${link}`)
+
         return {
-
+            //   appendURL
         };
     },
 
-    mounted() {
-
-    },
-
-    methods: {
-
-    },
 };
 </script>
 
