@@ -1,6 +1,8 @@
 <template>
-    <div class="flex justify-center w-full">
+    <div class="flex flex-row justify-center w-full">
         <form @submit.prevent="searchMeetings">
+
+
             <div date-rangepicker="" class="flex items-center">
             <div class="relative">
             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -28,6 +30,22 @@
                 placeholder="Select date end"
                 />
             </div>
+            <Dropdown
+            class="mx-2"
+                 filter="true"
+                 optionLabel="name"
+                 placeholder="Choose Type"
+                 :options="[
+                            {name: 'Physical Meeting', code: 'PM'},
+                            {name: 'Zoom Meeting', code: 'ZM'},
+                            {name: 'Make-Up', code: 'MU'},
+                            {name: 'All', code: 'ALL'}
+                          ]"
+                optionValue="code"
+
+                v-model="form.type"
+
+               />
               <Button icon="pi pi-send" type="submit" class="mx-1 p-button-success" />
               <Button type="button" @click="resetForm()" icon="pi pi-history" class="mx-3 p-button-secondary" />
 
@@ -46,20 +64,22 @@ import { useForm } from "@inertiajs/inertia-vue3";
 
     const props=defineProps({model:String,
                                 sd:Date,
-                                ed:Date
+                                ed:Date,
+                                tp:String,
                                 });
     const {model,sd,ed}= toRefs(props)
     const form= useForm(
                         {
                             startDate:props.sd,
                             endDate:props.ed,
+                            type:props.tp
                         }
     )
     const searchMeetings=()=>{
             form.get(route('meetings.index'))
     }
 
-    const resetForm=()=>(Inertia.get(route('meetings.index'),{'startDate':'','endDate':''}));
+    const resetForm=()=>(Inertia.get(route('meetings.index'),{'startDate':'','endDate':'','type':'ALL'}));
     // const emit =defineEmits('loadMembers');
     let items=null
 

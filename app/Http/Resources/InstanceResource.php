@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Carbon\Carbon;
 use Illuminate\Http\Resources\Json\JsonResource;
-
+use App\AttendanceManager;
 class InstanceResource extends JsonResource
 {
     /**
@@ -29,7 +29,7 @@ class InstanceResource extends JsonResource
                   'meeting_date'=>Carbon::parse($this->start_time)->toDateString(),
                   'meeting_date_humans'=>Carbon::parse($this->start_time)->diffForHumans(),
                   'type'=>'zoom',
-                  'attendees'=>$this->attendees_count(),
+                  'attendees'=>AttendanceManager::countAttendance('instance',$this->id),
                   'identifier'=>'zoom'.$this->id,
                   'icon'=>'zoom',
               ];

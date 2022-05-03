@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Resources;
+
+use App\AttendanceManager;
 use Carbon\Carbon;
 
 use Illuminate\Http\Resources\Json\JsonResource;
@@ -23,7 +25,7 @@ class MakeUpResource extends JsonResource
                     'meeting_date'=>Carbon::parse($this->date)->toDateString(),
                     'meeting_date_humans'=>Carbon::parse($this->date)->diffForHumans(),
                     'type'=>'makeup',
-                    'attendees'=>2,//$this->attendees_count(),
+                    'attendees'=>AttendanceManager::countAttendeesByType('makeup',$this->id),
                     'identifier'=>'makeup'.$this->id,
                     'icon'=>'makeup'
         ];

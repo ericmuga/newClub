@@ -15,6 +15,12 @@ return new class extends Migration
     {
         Schema::create('physical_meetings', function (Blueprint $table) {
             $table->id();
+            $table->date('date');
+            $table->dateTimeTz('start_time');
+            $table->dateTimeTz('end_time');
+            $table->string('venue');
+            $table->string('guest_speaker');
+            $table->string('topic');
             $table->timestamps();
         });
     }

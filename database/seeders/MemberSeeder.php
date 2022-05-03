@@ -162,10 +162,10 @@ class MemberSeeder extends Seeder
             DB::table('members')->insert($data);
 
 
-            $members=Member::all();
-            foreach ($members as $member){
-                Attendee::create(['attendable_id'=>$member->id,'attendable_type'=>'member']);
-            }
+            // $members=Member::all();
+            // foreach ($members as $member){
+            //     Attendee::create(['attendable_id'=>$member->id,'attendable_type'=>'member']);
+            // }
         // DB::table('members')
         //   ->insert([
         //       'name'=>'Eric Muga',

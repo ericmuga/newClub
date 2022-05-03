@@ -5,7 +5,7 @@ namespace App\Http\Resources;
 use Illuminate\Http\Resources\Json\JsonResource;
 use App\Models\{Club, Field};
 use Creativeorange\Gravatar\Facades\Gravatar;
-
+use App\AttendanceManager;
 class MemberResource extends JsonResource
 {
     /**
@@ -38,6 +38,7 @@ class MemberResource extends JsonResource
                  'field'=>$this->field_id?$this->field->name:'',
                  'club'=>$this->club_id?$this->club->name:'',
                  'rotary_number'=>$this->rotary_number,
+                 'meetings'=>AttendanceManager::countMeetingsByType('member',$this->id)
         ] ;
 
     }

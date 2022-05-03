@@ -16,7 +16,7 @@ class GuestObserver
     {
         //
 
-        Attendee::create(['attendable_id'=>$guest->id,'attendable_type'=>'guest']);
+        // Attendee::create(['attendable_id'=>$guest->id,'attendable_type'=>'guest']);
     }
 
     /**
@@ -39,9 +39,9 @@ class GuestObserver
     public function deleted(Guest $guest)
     {
         //
-        Attendee::where('attendable_type','guest')
-                ->where('attendable_id',$guest->id)
-                ->delete();
+        // Attendee::where('attendable_type','guest')
+        //         ->where('attendable_id',$guest->id)
+        //         ->delete();
     }
 
     /**

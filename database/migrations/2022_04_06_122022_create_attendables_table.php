@@ -13,11 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('attendables', function (Blueprint $table) {
-            // $table->id();
+        Schema::create('attendance', function (Blueprint $table) {
+            $table->morphs('attendee');
             $table->morphs('attendable');
-            $table->bigInteger('attendee_id');
-            $table->primary(['attendee_id','attendable_type','attendable_id']);
+            $table->primary(['attendee_id','attendee_type','attendable_type','attendable_id'],'attendable_attendee');
             $table->timestamps();
         });
     }

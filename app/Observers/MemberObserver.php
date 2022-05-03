@@ -15,7 +15,7 @@ class MemberObserver
     public function created(Member $member)
     {
         //create a new attendee for every Member created
-       Attendee::create(['attendable_type'=>'member','attendable_id'=>$member->id]);
+    //    Attendee::create(['attendee_type'=>'member','attendee'=>$member->id]);
 
 
     }
@@ -40,9 +40,7 @@ class MemberObserver
     public function deleted(Member $member)
     {
         //
-        Attendee::where('attendable_id',$member->id)
-                ->where('attendable_type','member')
-                ->delete();
+        //
     }
 
     /**

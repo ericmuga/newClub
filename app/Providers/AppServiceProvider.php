@@ -41,8 +41,9 @@ class AppServiceProvider extends ServiceProvider
         Relation::enforceMorphMap([
             'member' => 'App\Models\Member',
             'guest' => 'App\Models\Guest',
-            'Instance'=>'App\Models\Instance',
-            'attendee'=>'App\Models\Attendee',
+            'instance'=>'App\Models\Instance',
+            'makeup'=>'App\Models\Makeup',
+            'physical'=>'App\Models\PhysicalMeeting',
 
         ]);
 

@@ -3,10 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\InstanceResource;
-use App\Http\Resources\MakeUpResource;
-use App\Models\Instance;
-use App\Models\MakeUp;
+use App\Http\Resources\{MakeUpResource,PhysicalMeetingResource,InstanceResource};
+use App\Models\{Instance,MakeUp,PhysicalMeeting};
 use App\MyPaginator;
 class MeetingController extends Controller
 {
@@ -24,16 +22,37 @@ class MeetingController extends Controller
 
         $makeups=MakeUpResource::collection(
                                                 MakeUp::Query()
-                                                        ->when($request->input('startDate'),fn($q,$startDate)=>($q->where('date','>=',$startDate)))
-                                                        ->when($request->input('endDate'),fn($q,$endDate)=>($q->where('date','<=',$endDate)))
+                                                        ->when($request->input('startDate'),fn($q,$startDate)=>($q->whereDate('date','>=',$startDate)))
+                                                        ->when($request->input('endDate'),fn($q,$endDate)=>($q->whereDate('date','<=',$endDate)))
                                                         ->orderby('date','desc')
                                                         ->get());
 
-         $data=MyPaginator::paginate($instances->merge($makeups)->sortByDesc('date'))->withQueryString();
+    $physicalmeetings=PhysicalMeetingResource::collection(
+                                                PhysicalMeeting::Query()
+                                                        ->when($request->input('startDate'),fn($q,$startDate)=>($q->whereDate('date','>=',$startDate)))
+                                                        ->when($request->input('endDate'),fn($q,$endDate)=>($q->whereDate('date','<=',$endDate)))
+                                                        ->orderby('date','desc')
+                                                        ->get());
+
+        if ($request->input('type'))
+        {
+            switch ($request->type)
+            {
+
+                case 'ALL':$data=$instances->merge($makeups)->merge($physicalmeetings); break;
+                case 'PM':$data=$physicalmeetings; break;
+                case 'ZM':$data=$instances; break;
+                case 'MU':$data=$makeups; break;
+
+           }
+        }else $data=$instances->merge($makeups)->merge($physicalmeetings);
+
+         $data=MyPaginator::paginate($data->sortByDesc('meeting_date'))->withQueryString();
 
          $filters=[
                     'startDate'=>$request->input('startDate')?:'',
                     'endDate'=>$request->input('endDate')?:'',
+                    'type'=>$request->input('type')?:'All'
          ];
         return (['filters'=>$filters,'meetings'=>$data]);
     }

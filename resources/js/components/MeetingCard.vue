@@ -17,10 +17,11 @@
 
     </p>
   </div>
-  <div class="flex flex-row mt-4">
-   <p class="flex">Present {{meeting.attendees}}</p>
-   <p>Present {{meeting.attendees}}</p>
-   <a href="#" class="text-xl font-medium text-indigo-500">
+  <div class="flex flex-col mt-4 text-center">
+   <p>Members {{meeting.attendees.members}}</p>
+   <p>Guests {{meeting.attendees.guests}}</p>
+   <p>Total {{meeting.attendees.guests+meeting.attendees.members}}</p>
+   <!-- <a href="#" class="text-xl font-medium text-indigo-500">
 
 
         <Button
@@ -28,7 +29,7 @@
         >
         Explore
         </Button>
-    </a>
+    </a> -->
   </div>
 </div>
 

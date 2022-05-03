@@ -1,7 +1,8 @@
 <template>
     <div>
-          <div>
-          <DatePicker :model="`meetings`" :sd="filters.startDate" :ed="filters.endDate" />
+          <div class="flex justify-between w-full">
+              <DatePicker :model="`meetings`" :sd="filters.startDate" :ed="filters.endDate" :tp="filters.type" />
+
           </div>
           <div class="col-span-4 -mt-6 text-center">
                     <Pagination :links=meetings.links :prefix="`meetings`"/>
@@ -20,15 +21,20 @@
 
             </div>
            </transition>
+           <div class="col-span-4 -mt-6 text-center">
+                    <Pagination :links=meetings.links :prefix="`meetings`"/>
+            </div>
     </div>
 </template>
 <script setup>
 
-    import { ref, reactive } from 'vue';
+    import { ref, reactive, watch } from 'vue';
     import Pagination from '@/components/Pagination'
     import MeetingCard from '@/components/MeetingCard'
    import SearchBox from '@/components/SearchBox'
    import { useForm } from '@inertiajs/inertia-vue3'
+   import debounce from 'lodash/debounce'
+
    import gsap from 'gsap';
 //    import 'flowbite';
 import DatePicker from '@/components/DatePicker.vue';
@@ -61,6 +67,14 @@ import DatePicker from '@/components/DatePicker.vue';
                             // onComplete:done
             })
         }
+
+    const form=useForm({type:''});
+    const changeMeeting=()=>{form.get('meetings.index')}
+    // const debounce=debounce;
+    // const form=useForm({type:''});
+
+
+
 </script>
 <style lang="scss" scoped>
 

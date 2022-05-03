@@ -19578,8 +19578,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_MeetingCard__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/components/MeetingCard */ "./resources/js/components/MeetingCard.vue");
 /* harmony import */ var _components_SearchBox__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @/components/SearchBox */ "./resources/js/components/SearchBox.vue");
 /* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
-/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
-/* harmony import */ var _components_DatePicker_vue__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/components/DatePicker.vue */ "./resources/js/components/DatePicker.vue");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash/debounce */ "./node_modules/lodash/debounce.js");
+/* harmony import */ var lodash_debounce__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash_debounce__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var gsap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! gsap */ "./node_modules/gsap/index.js");
+/* harmony import */ var _components_DatePicker_vue__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @/components/DatePicker.vue */ "./resources/js/components/DatePicker.vue");
+
 
 
 
@@ -19614,7 +19617,7 @@ __webpack_require__.r(__webpack_exports__);
 
     var enter = function enter(el) {
       // console.log('starting to enter into the dom')
-      gsap__WEBPACK_IMPORTED_MODULE_6__["default"].to(el, {
+      gsap__WEBPACK_IMPORTED_MODULE_7__["default"].to(el, {
         opacity: 1,
         x: 0,
         duration: 0.8 // onComplete:done
@@ -19622,18 +19625,32 @@ __webpack_require__.r(__webpack_exports__);
       });
     };
 
+    var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__.useForm)({
+      type: ''
+    });
+
+    var changeMeeting = function changeMeeting() {
+      form.get('meetings.index');
+    }; // const debounce=debounce;
+    // const form=useForm({type:''});
+
+
     var __returned__ = {
       props: props,
       beforeEnter: beforeEnter,
       enter: enter,
+      form: form,
+      changeMeeting: changeMeeting,
       ref: vue__WEBPACK_IMPORTED_MODULE_0__.ref,
       reactive: vue__WEBPACK_IMPORTED_MODULE_0__.reactive,
+      watch: vue__WEBPACK_IMPORTED_MODULE_0__.watch,
       Pagination: _components_Pagination__WEBPACK_IMPORTED_MODULE_1__["default"],
       MeetingCard: _components_MeetingCard__WEBPACK_IMPORTED_MODULE_2__["default"],
       SearchBox: _components_SearchBox__WEBPACK_IMPORTED_MODULE_3__["default"],
       useForm: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_4__.useForm,
-      gsap: gsap__WEBPACK_IMPORTED_MODULE_6__["default"],
-      DatePicker: _components_DatePicker_vue__WEBPACK_IMPORTED_MODULE_5__["default"]
+      debounce: (lodash_debounce__WEBPACK_IMPORTED_MODULE_5___default()),
+      gsap: gsap__WEBPACK_IMPORTED_MODULE_7__["default"],
+      DatePicker: _components_DatePicker_vue__WEBPACK_IMPORTED_MODULE_6__["default"]
     };
     Object.defineProperty(__returned__, '__isScriptSetup', {
       enumerable: false,
@@ -19945,7 +19962,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     model: String,
     sd: Date,
-    ed: Date
+    ed: Date,
+    tp: String
   },
   setup: function setup(__props, _ref) {
     var expose = _ref.expose;
@@ -19959,7 +19977,8 @@ __webpack_require__.r(__webpack_exports__);
 
     var form = (0,_inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_2__.useForm)({
       startDate: props.sd,
-      endDate: props.ed
+      endDate: props.ed,
+      type: props.tp
     });
 
     var searchMeetings = function searchMeetings() {
@@ -19969,7 +19988,8 @@ __webpack_require__.r(__webpack_exports__);
     var resetForm = function resetForm() {
       return _inertiajs_inertia__WEBPACK_IMPORTED_MODULE_1__.Inertia.get(route('meetings.index'), {
         'startDate': '',
-        'endDate': ''
+        'endDate': '',
+        'type': 'ALL'
       });
     }; // const emit =defineEmits('loadMembers');
 
@@ -21116,19 +21136,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "col-span-4 -mt-6 text-center"
+  "class": "flex justify-between w-full"
 };
 var _hoisted_2 = {
+  "class": "col-span-4 -mt-6 text-center"
+};
+var _hoisted_3 = {
   "class": "grid grid-cols-5"
 };
+var _hoisted_4 = {
+  "class": "col-span-4 -mt-6 text-center"
+};
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
+  return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["DatePicker"], {
     model: "meetings",
     sd: $props.filters.startDate,
-    ed: $props.filters.endDate
+    ed: $props.filters.endDate,
+    tp: $props.filters.type
   }, null, 8
   /* PROPS */
-  , ["sd", "ed"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
+  , ["sd", "ed", "tp"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
     links: $props.meetings.links,
     prefix: "meetings"
   }, null, 8
@@ -21139,7 +21166,7 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     onEnter: $setup.enter
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.meetings.data, function (meeting) {
+      return [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(true), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)(vue__WEBPACK_IMPORTED_MODULE_0__.Fragment, null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.renderList)($props.meetings.data, function (meeting) {
         return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", {
           "class": "col-span-1 gap-2 mt-5",
           key: meeting.identifier
@@ -21156,7 +21183,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     _: 1
     /* STABLE */
 
-  })]);
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_4, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)($setup["Pagination"], {
+    links: $props.meetings.links,
+    prefix: "meetings"
+  }, null, 8
+  /* PROPS */
+  , ["links"])])]);
 }
 
 /***/ }),
@@ -21904,7 +21936,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm-bundler.js");
 
 var _hoisted_1 = {
-  "class": "flex justify-center w-full"
+  "class": "flex flex-row justify-center w-full"
 };
 var _hoisted_2 = ["onSubmit"];
 var _hoisted_3 = {
@@ -21940,6 +21972,8 @@ var _hoisted_8 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_InputText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputText");
 
+  var _component_Dropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dropdown");
+
   var _component_Button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Button");
 
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
@@ -21966,13 +22000,38 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     placeholder: "Select date end"
   }, null, 8
   /* PROPS */
-  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
+  , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
+    "class": "mx-2",
+    filter: "true",
+    optionLabel: "name",
+    placeholder: "Choose Type",
+    options: [{
+      name: 'Physical Meeting',
+      code: 'PM'
+    }, {
+      name: 'Zoom Meeting',
+      code: 'ZM'
+    }, {
+      name: 'Make-Up',
+      code: 'MU'
+    }, {
+      name: 'All',
+      code: 'ALL'
+    }],
+    optionValue: "code",
+    modelValue: $setup.form.type,
+    "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+      return $setup.form.type = $event;
+    })
+  }, null, 8
+  /* PROPS */
+  , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
     icon: "pi pi-send",
     type: "submit",
     "class": "mx-1 p-button-success"
   }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
     type: "button",
-    onClick: _cache[2] || (_cache[2] = function ($event) {
+    onClick: _cache[3] || (_cache[3] = function ($event) {
       return $setup.resetForm();
     }),
     icon: "pi pi-history",
@@ -22064,21 +22123,9 @@ var _hoisted_6 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 );
 
 var _hoisted_7 = {
-  "class": "flex flex-row mt-4"
+  "class": "flex flex-col mt-4 text-center"
 };
-var _hoisted_8 = {
-  "class": "flex"
-};
-var _hoisted_9 = {
-  href: "#",
-  "class": "text-xl font-medium text-indigo-500"
-};
-
-var _hoisted_10 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)(" Explore ");
-
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_Button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Button");
-
   return (0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementBlock)("div", null, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_1, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
     "class": "object-cover w-10 h-10 border-2 border-indigo-500 rounded-full",
     src: "/images/".concat($props.meeting.icon, ".png")
@@ -22088,20 +22135,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_5, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.meeting.meeting_date_humans), 1
   /* TEXT */
-  ), _hoisted_6]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_8, "Present " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.meeting.attendees), 1
+  ), _hoisted_6]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Members " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.meeting.attendees.members), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Present " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.meeting.attendees), 1
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Guests " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.meeting.attendees.guests), 1
   /* TEXT */
-  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("a", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Button, {
-    "class": "pi pi-secondary"
-  }, {
-    "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
-      return [_hoisted_10];
-    }),
-    _: 1
-    /* STABLE */
-
-  })])])])]);
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Total " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.meeting.attendees.guests + $props.meeting.attendees.members), 1
+  /* TEXT */
+  ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <a href=\"#\" class=\"text-xl font-medium text-indigo-500\">\n\n\n        <Button\n         class=\"pi pi-secondary\"\n        >\n        Explore\n        </Button>\n    </a> ")])])]);
 }
 
 /***/ }),
@@ -22156,18 +22196,42 @@ var _hoisted_10 = {
   "class": "flex flex-col items-center justify-around"
 };
 
-var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, "2k", -1
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/images/zoom.png",
+  "class": "w-6 h-4 rounded-full",
+  alt: ""
+}, null, -1
 /* HOISTED */
 );
 
-var _hoisted_12 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createStaticVNode)("<li class=\"flex flex-col items-center justify-between\"><svg class=\"w-4 text-blue-900 fill-current\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\"><path d=\"M7 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zm0 1c2.15 0 4.2.4 6.1 1.09L12 16h-1.25L10 20H4l-.75-4H2L.9 10.09A17.93 17.93 0 0 1 7 9zm8.31.17c1.32.18 2.59.48 3.8.92L18 16h-1.25L16 20h-3.96l.37-2h1.25l1.65-8.83zM13 0a4 4 0 1 1-1.33 7.76 5.96 5.96 0 0 0 0-7.52C12.1.1 12.53 0 13 0z\"></path></svg><div>10k</div></li><li class=\"flex flex-col items-center justify-around\"><svg class=\"w-4 text-blue-900 fill-current\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\"><path d=\"M9 12H1v6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-6h-8v2H9v-2zm0-1H0V5c0-1.1.9-2 2-2h4V2a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1h4a2 2 0 0 1 2 2v6h-9V9H9v2zm3-8V2H8v1h4z\"></path></svg><div>15</div></li>", 2);
+var _hoisted_12 = {
+  "class": "flex flex-col items-center justify-between"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/images/makeup.png",
+  "class": "w-6 h-4 rounded-full",
+  alt: ""
+}, null, -1
+/* HOISTED */
+);
 
 var _hoisted_14 = {
+  "class": "flex flex-col items-center justify-around"
+};
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
+  src: "/images/physicalmeeting.png",
+  "class": "w-4 h-4 rounded-full",
+  alt: ""
+}, null, -1
+/* HOISTED */
+);
+
+var _hoisted_16 = {
   "class": "flex justify-center p-4 mx-8 mt-2 border-t"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
-  var _component_DocumentReportIcon = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("DocumentReportIcon");
-
   var _component_Button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Button");
 
   var _component_Link = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Link");
@@ -22186,7 +22250,13 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", _hoisted_8, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.member.rotary_number), 1
   /* TEXT */
-  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <svg class=\"w-4 text-blue-900 fill-current\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\">\n                    <path d=\"M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z\"/>\n                </svg> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_DocumentReportIcon), _hoisted_11]), _hoisted_12]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_14, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button class=\"justify-start w-1/2 px-6 py-2 mx-2 font-semibold text-white bg-gray-900 rounded-full hover:shadow-lg\">Profile</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Button icon=\"pi pi-times\" class=\"justify-end p-button-rounded p-button-danger\"\n                    @click=\"dropMember(member.id)\"\n            /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_10, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <svg class=\"w-4 text-blue-900 fill-current\" xmlns=\"http://www.w3.org/2000/svg\" viewBox=\"0 0 20 20\">\n                    <path d=\"M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z\"/>\n                </svg> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <DocumentReportIcon/> "), _hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.member.meetings.makeup), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.member.meetings.zoom), 1
+  /* TEXT */
+  )]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", _hoisted_14, [_hoisted_15, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.member.meetings.physical), 1
+  /* TEXT */
+  )])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_16, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <button class=\"justify-start w-1/2 px-6 py-2 mx-2 font-semibold text-white bg-gray-900 rounded-full hover:shadow-lg\">Profile</button> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <Button icon=\"pi pi-times\" class=\"justify-end p-button-rounded p-button-danger\"\n                    @click=\"dropMember(member.id)\"\n            /> "), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
     href: "#"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
