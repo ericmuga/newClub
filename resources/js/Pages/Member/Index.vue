@@ -3,14 +3,14 @@
     <div class="grid items-center w-full grid-cols-4 gap-3 px-3 mx-3 mt-5" >
         <!-- <div  v-if="members.data.length>0"> -->
             <div class="col-span-4 -mt-6 text-center">
-                    <Pagination :links=members.links :resource=model />
+                    <Pagination :links=members.links :prefix="`members`"/>
             </div>
 
             <div class="col-span-4 ">
 
 
                 <div class="flex flex-row justify-center text-center">
-                    <SearchBox :model=model />
+                    <SearchBox :model="`members.index`" />
                 </div>
                 <div class="flex flex-row justify-start text-center">
                     <Form @submit.prevent="uploadMembers" class="flex flex-row ">
@@ -23,9 +23,19 @@
                                 data-tooltip-target="tooltip-default"
                                 class="mr-2"
                                 />
-
-                         <Button v-if="form.member_list" :disabled=form.progress type="submit"  icon="pi pi-upload" class="mx-2 p-button-rounded p-button-secondary"/>
+                          <Button v-if="form.member_list" :disabled=form.progress type="submit"  icon="pi pi-upload" class="mx-2 p-button-rounded p-button-secondary"/>
                     </Form>
+                    <a href="members/export">
+                        <Button
+                            label="Download List"
+                            type="button"
+                            icon="pi pi-download"
+                            class="p-button-success icon-left"
+                            >
+                      </Button>
+                    </a>
+
+
 
 
 
@@ -44,9 +54,20 @@
             <Link
                :href="route('members.create')"
              >
-
-                 <Button type="button" label="Add Member" icon="pi pi-users" class="p-button-warning"/>
+             <Button type="button" label="Add Member" icon="pi pi-user-plus" class="p-button-warning"/>
             </Link>
+             <Link
+                     :href="route('members.list')"
+                    >
+                    <Button
+                      label="List View"
+                      type="button"
+                      icon="pi pi-book"
+                      class="p-button-secondary icon-left"
+                    >
+
+                    </Button>
+                    </Link>
 
 </div>
             </div>
@@ -62,7 +83,7 @@
                  </transition>
             </div>
             <div class="col-span-4">
-              <Pagination :links=members.links :resource=model />
+              <Pagination :links=members.links :prefix="`members`" />
             </div>
 
         <div class="w-full text-center">

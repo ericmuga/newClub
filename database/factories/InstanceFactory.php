@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,7 +18,18 @@ class InstanceFactory extends Factory
     public function definition()
     {
         return [
-            //
-        ];
+            /**
+             * $table->id();
+            $table->string('uuid')->unique();
+            $table->dateTimeTz('start_time')->nullable();
+            $table->dateTimeTz('end_time')->nullable();
+            $table->timestamps();
+             */
+              'uuid'=>$this->faker->unique()->uuid(),
+              'start_time'=>Carbon::parse($this->faker->date())->setTimeZone('Africa/Nairobi'),
+              'end_time'=>carbon::parse($this->faker->date())->setTimeZone('Africa/Nairobi'),
+
+            ];
+
     }
 }

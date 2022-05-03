@@ -94,6 +94,7 @@ import { computed,ref } from 'vue'
 const navigation = [
   { name: 'Dashboard', href: route('dashboard'), current:false,component:'Dashboard/Index' },
   { name: 'Members', href: route('members.index'), current:false,component:'Member/Index' },
+  { name: 'Meetings', href: route('meetings.index'), current:false,component:'Meeting/Index' },
 //   { name: 'Reports', href: route('reports.index'), current: false,component:'Reports/Index' },
 //   { name: 'Totals', href: route('totals.index'), current: false,component:'Totals/Index' },
 //   { name: 'Totals', href: route('totals.index'), current: false,component:'Totals/Index' },

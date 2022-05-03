@@ -4,7 +4,7 @@
         <div class="p-3 mt-6 text-black">
             <Link     v-for="link in links" :key=link.url
                       v-html="link.label"
-                      :href="`${resource}/${link.url}`"
+                      :href="refinedURL(link.url)"
                       :class="{'text-slate-500 hover:bg-none':!link.url,'font-bold underline':link.active}"
                       preserveScroll
                       class="p-2 border-2 border-white border-sm hover:bg-slate-200 hover:font-bold"
@@ -15,18 +15,23 @@
 </template>
 
 <script>
+
+import {computed, ref} from 'vue'
 export default {
     props:{
         links:Object,
-        resource:String,
+        prefix:String,
     },
    setup(props){
 
     //    const resource= props.resource.value
-    //    const appendURL=(link)=>(`${resource}/${link}`)
+       const links=props.links
+       const prefix= ref(props.prefix)
+       const url=ref(props.url);
+       const refinedURL=(link)=>(`${prefix.value}/${link}`)
 
         return {
-            //   appendURL
+              refinedURL
         };
     },
 

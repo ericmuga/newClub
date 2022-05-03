@@ -41,6 +41,9 @@ class AppServiceProvider extends ServiceProvider
         Relation::enforceMorphMap([
             'member' => 'App\Models\Member',
             'guest' => 'App\Models\Guest',
+            'Instance'=>'App\Models\Instance',
+            'attendee'=>'App\Models\Attendee',
+
         ]);
 
         JsonResource::withoutWrapping();

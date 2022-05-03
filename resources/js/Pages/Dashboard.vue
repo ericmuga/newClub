@@ -55,7 +55,7 @@
                       <template #footer>
                         <div class="text-center">
                             <Link
-                              href="#"
+                              :href="route('meetings.index')"
                             >
                                <Button icon="pi pi-book" label="Explore"  />
                             </Link>

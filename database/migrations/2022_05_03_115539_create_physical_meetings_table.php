@@ -13,11 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('attendables', function (Blueprint $table) {
-            // $table->id();
-            $table->morphs('attendable');
-            $table->bigInteger('attendee_id');
-            $table->primary(['attendee_id','attendable_type','attendable_id']);
+        Schema::create('physical_meetings', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('attendables');
+        Schema::dropIfExists('physical_meetings');
     }
 };

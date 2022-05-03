@@ -16,7 +16,9 @@ return new class extends Migration
         Schema::create('make_ups', function (Blueprint $table) {
             $table->id();
             $table->string('description');
+            $table->string('venue');
             $table->dateTimeTz('date');
+            $table->enum('type',['club_meeting','project','social']);
             $table->timestamps();
         });
     }

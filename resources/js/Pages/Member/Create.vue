@@ -34,12 +34,22 @@
   <div class="mt-10 sm:mt-0">
     <div class="md:grid md:grid-cols-3 md:gap-6">
       <div class="md:col-span-1">
-        <div class="px-4 sm:px-0">
-          <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3>
+        <!-- <div class="px-4 sm:px-0"> -->
+          <!-- <h3 class="text-lg font-medium leading-6 text-gray-900">Personal Information</h3> -->
           <!-- <p class="mt-1 text-sm text-gray-600">Use a permanent address where you can receive mail.</p> -->
-        </div>
+        <!-- </div> -->
       </div>
-      <div class="mt-5 md:mt-0 md:col-span-6">
+         <transition
+                appear
+
+                @before-enter="beforeEnter"
+                @enter="enter"
+            >
+
+      <div class="mt-5 border border-2 rounded-lg md:mt-0 md:col-span-6 border-slate-400">
+          <div class="w-full p-4 tracking-wide text-center text-white uppercase rounded-md bg-slate-500">
+              Member Card
+          </div>
         <form action="#" @submit.prevent="createMember()">
           <div class="overflow-hidden shadow sm:rounded-md">
             <div class="px-4 py-5 bg-white sm:p-6">
@@ -138,6 +148,7 @@
           </div>
         </form>
       </div>
+         </transition>
     </div>
   </div>
 
@@ -227,6 +238,8 @@
     import { ref, reactive } from 'vue';
    import{countries} from '@/assets/countries.js'
    import { useForm } from '@inertiajs/inertia-vue3'
+   import gsap from 'gsap';
+
     export default {
        props:{
                 fields:Object,
@@ -236,6 +249,22 @@
         setup(props, context) {
           const country= ref(countries)
           const fields=ref(props.fields)
+
+          const beforeEnter=(el)=>{
+            //    console.log('set the initial state')
+             el.style.opacity=0;
+             el.style.transform='translateX(-40px)'
+        }
+
+        const enter =(el)=>{
+            // console.log('starting to enter into the dom')
+                gsap.to(el,{
+                    opacity:1,
+                    x:0,
+                    duration:0.8,
+                            // onComplete:done
+            })
+        }
 
           const form=useForm({
                             name:'',
@@ -255,9 +284,11 @@
          }
 
                       return {
-               form,countries,fields,createMember
+               form,countries,fields,createMember,enter,beforeEnter
             }
         }
+
+
     }
 </script>
 

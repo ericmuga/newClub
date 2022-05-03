@@ -32,5 +32,12 @@ class Member extends Model
             return $this->morphOne(Attendee::class,'attendable');
         }
 
+        // public function attendInstance(Instance $instance)
+        // {
+        //      return $this->attendee()->attendInstance($instance);
+        // }
+
+
+
 
 }

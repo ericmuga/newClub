@@ -3,7 +3,7 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{AuthController,DashboardController,ZoomController,MemberController};
+use App\Http\Controllers\{AuthController,DashboardController,ZoomController,MemberController,MeetingController};
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 //authentication
@@ -18,6 +18,12 @@ Route::middleware(['auth'])->group(function () {
          ->breadcrumbs('dashboard');
     Route::get('/',[DashboardController::class,'index']);
 
+    Route::get('members/export', [MemberController::class, 'export'])->name('members.export');
+    Route::post('members/drop',[MemberController::class,'destroy'])->name('members.drop');
+    Route::post('members/import',[MemberController::class,'memberUpload'])->name('members.import');
+    Route::get('members/list',[MemberController::class,'list'])->name('members.list');
+    Route::get('members/create',[MemberController::class,'create'])->name('members.create')->breadcrumbs('Create');
+    // Route::get('members/show',[MemberController::class,'create'])->name('members.create')->breadcrumbs('Create');
     Route::resource('members', MemberController::class)
         ->breadcrumbs([
         'index' => 'Member',
@@ -25,9 +31,17 @@ Route::middleware(['auth'])->group(function () {
         'show' => fn(App\Models\Member $member) => $member->name,
         'edit' => 'Edit',
         ]);
-   Route::post('members/drop',[MemberController::class,'destroy'])->name('members.drop');
 
-   Route::post('members/upload',[MemberController::class,'memberUpload'])->name('members.upload');
+    Route::resource('meetings', MeetingController::class)
+        ->breadcrumbs([
+        'index' => 'Meeting',
+        'create' => 'New Meeting',
+        'show' => fn(App\Models\Meeting $Meeting) => $meeting->name,
+        'edit' => 'Edit',
+        ]);
+
+
+
 });
 
 

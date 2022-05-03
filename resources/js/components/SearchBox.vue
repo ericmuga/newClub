@@ -20,7 +20,7 @@ import {Inertia} from '@inertiajs/inertia'
   let searchKey=ref('')
 //   const getRoute=computed(()=>route(`${props.model}'.index'`))
   watch(searchKey,debounce((value)=>{
-                                    Inertia.get(route(model.value+'.index'),{'search':value},{preserveState:true,replace:true})
+                                    Inertia.get(route(model.value),{'search':value},{preserveState:true,replace:true})
                                     },300));
 </script>
 

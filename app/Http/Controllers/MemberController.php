@@ -7,20 +7,24 @@ use Illuminate\Http\Request;
 use App\MyPaginator;
 use App\Imports\MembersImport;
 use Maatwebsite\Excel\Facades\Excel;
+use App\Exports\MembersExport;
 
 use function PHPUnit\Framework\returnSelf;
 
 class MemberController extends Controller
 {
 
-
+    public function export()
+    {
+       return Excel::download(new MembersExport, 'members.xlsx');
+    }
 
     public function MemberList(Request $request)
     {
 
         return [
                 'search'=>$request->input('search')?:null,
-                'model'=>'members',
+
                 'members'=>MyPaginator::paginate(MemberResource::collection(Member::query()
                                                                                   ->when($request->input('search'),
                                                                                           fn($query,$search)=>($query->where('name','like','%'.$search.'%')
@@ -31,7 +35,7 @@ class MemberController extends Controller
                                                                                         ->orderBy('name')
                                                                                         ->get()
                                                                                 ),$request->input('perPage')?:16
-                                                                                    )->withQueryString()
+                                                                                )->withQueryString()
 
 
                 ];
@@ -51,6 +55,12 @@ class MemberController extends Controller
         // dd('here');
             return inertia('Member/Index',$this->MemberList($request));
 
+    }
+
+    public function list(Request $request)
+    {
+
+        return inertia('Member/List',$this->MemberList($request));
     }
 
     public function create()
