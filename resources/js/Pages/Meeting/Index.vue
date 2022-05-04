@@ -8,6 +8,21 @@
                     <Pagination v-if="meetings.data.length!=0" :links=meetings.links :prefix="`meetings`"/>
                     <div v-else class="col-span-4 py-6 mt-6 text-center">No Meetings were found</div>
             </div>
+            <div class="flex justify-center w-full">
+               <Link
+                 :href="route('meetings.create')"
+               >
+                <Button
+                  type="button"
+                  icon='pi pi-plus'
+                  class="p-button-warning"
+
+                />
+               </Link>
+
+
+
+            </div>
            <transition
                 appear
 

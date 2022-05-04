@@ -3,8 +3,8 @@
 
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{AuthController,DashboardController,ZoomController,MemberController,MeetingController};
-
+use App\Http\Controllers\{AuthController,DashboardController,ZoomController,MemberController};
+use App\Http\Controllers\MeetingController;
 //authentication
 Route::get('/login',[AuthController::class,'create'])->name('login');
 Route::post('/login',[AuthController::class,'store'])->name('login.store');
@@ -30,14 +30,18 @@ Route::get('register',fn()=>inertia('Auth/Register'))->name('register')->breadcr
         'show' => fn(App\Models\Member $member) => $member->name,
         'edit' => 'Edit',
         ]);
+    //  Route::post('/meetings','MeetingController@store')->name('meetings.store');
+     Route::get('/meetings/{type}/{id}',[MeetingController::class,'show'])->name('meeting.show');
 
-    Route::resource('meetings', MeetingController::class)
+     Route::resource('meetings', MeetingController::class)
         ->breadcrumbs([
         'index' => 'Meeting',
         'create' => 'New Meeting',
-        'show' => fn(App\Models\Meeting $Meeting) => $meeting->name,
+        'show' => fn(App\Models\Meeting $meeting) => $meeting->name,
         'edit' => 'Edit',
         ]);
+
+
 
 
 

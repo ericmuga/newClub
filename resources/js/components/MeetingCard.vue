@@ -21,15 +21,11 @@
    <p>Members {{meeting.attendees.members}}</p>
    <p>Guests {{meeting.attendees.guests}}</p>
    <p>Total {{meeting.attendees.guests+meeting.attendees.members}}</p>
-   <!-- <a href="#" class="text-xl font-medium text-indigo-500">
-
-
-        <Button
-         class="pi pi-secondary"
-        >
-        Explore
-        </Button>
-    </a> -->
+   <Link
+     :href="route('meeting.show',[meeting.type,meeting.identifier])"
+   >
+    View Details
+   </Link>
   </div>
 </div>
 

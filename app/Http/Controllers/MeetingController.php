@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Resources\{MakeUpResource,PhysicalMeetingResource,InstanceResource};
-use App\Models\{Instance,MakeUp,PhysicalMeeting};
+use App\Http\Resources\{MakeUpResource,PhysicalMeetingResource,InstanceResource, MemberResource};
+use App\Models\{Instance,MakeUp, Meeting, PhysicalMeeting,Member};
 use App\MyPaginator;
 class MeetingController extends Controller
 {
@@ -34,7 +34,7 @@ class MeetingController extends Controller
                                                         ->orderby('date','desc')
 
                                                       ->get());
-$data=collect([]);
+        $data=collect([]);
         if ($request->input('type'))
         {
             switch ($request->type)
@@ -60,10 +60,31 @@ $data=collect([]);
 
 
     public function index(Request $request)
-  {
-      # code...
-      //this will list all the meetings and their types.
-      return inertia('Meeting/Index',$this->meeting_list($request)) ;
+    {
+        # code...
+        //this will list all the meetings and their types.
+        return inertia('Meeting/Index',$this->meeting_list($request)) ;
+        }
+
+    //display the create meeting form
+    public function create()
+    {
+        # code...
+
+        return inertia('Meeting/Create',[]);
+    }
+
+    public function store(Request $request)
+    {
+        dd($request->all());
+        # code...
+    }
+
+    public function show($type,$id)
+    {
+         $members=MyPaginator::paginate(MemberResource::collection(Member::all()))->withQueryString();
+        //  dd($members);
+        return inertia('Meeting/Detail',['members'=>$members]);
     }
 
 }
