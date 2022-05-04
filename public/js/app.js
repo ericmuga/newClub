@@ -20162,7 +20162,7 @@ __webpack_require__.r(__webpack_exports__);
     var url = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(props.url);
 
     var refinedURL = function refinedURL(link) {
-      return "".concat(prefix.value, "/").concat(link);
+      return "".concat(prefix.value).concat(link);
     };
 
     return {

@@ -28,7 +28,7 @@ export default {
        const links=props.links
        const prefix= ref(props.prefix)
        const url=ref(props.url);
-       const refinedURL=(link)=>(`${prefix.value}/${link}`)
+       const refinedURL=(link)=>(`${prefix.value}${link}`)
 
         return {
               refinedURL
