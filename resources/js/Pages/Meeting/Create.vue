@@ -69,6 +69,14 @@
                     />
               </div>
 
+                 <TextArea
+                    placeholder="Description"
+
+                    class="my-1 border-2 border-slate-300"
+                    v-model="form.description"
+                    />
+
+
             <div class="w-full my-3 text-center">
                 <Dropdown
                     filter="true"
@@ -112,7 +120,8 @@ import {gsap} from 'gsap'
                        guest_speaker:'',
                        start_time:null,
                        venue:'',
-                       type:''
+                       type:'',
+                       description:''
 
                      })
   const createMeeting=()=>{

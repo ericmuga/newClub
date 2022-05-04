@@ -23,6 +23,7 @@
    <p>Total {{meeting.attendees.guests+meeting.attendees.members}}</p>
    <Link
      :href="route('meeting.show',[meeting.type,meeting.identifier])"
+     class="text-teal-500"
    >
     View Details
    </Link>

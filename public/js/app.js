@@ -19587,7 +19587,8 @@ __webpack_require__.r(__webpack_exports__);
       guest_speaker: '',
       start_time: null,
       venue: '',
-      type: ''
+      type: '',
+      description: ''
     });
 
     var createMeeting = function createMeeting() {
@@ -21312,6 +21313,8 @@ var _hoisted_13 = {
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_InputText = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("InputText");
 
+  var _component_TextArea = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("TextArea");
+
   var _component_Dropdown = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Dropdown");
 
   var _component_Button = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Button");
@@ -21373,12 +21376,21 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         })
       }, null, 8
       /* PROPS */
-      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
+      , ["modelValue"])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_TextArea, {
+        placeholder: "Description",
+        "class": "my-1 border-2 border-slate-300",
+        modelValue: $setup.form.description,
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+          return $setup.form.description = $event;
+        })
+      }, null, 8
+      /* PROPS */
+      , ["modelValue"]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Dropdown, {
         filter: "true",
         optionLabel: "name",
         optionValue: "code",
         modelValue: $setup.form.type,
-        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+        "onUpdate:modelValue": _cache[6] || (_cache[6] = function ($event) {
           return $setup.form.type = $event;
         }),
         options: [{
@@ -22840,7 +22852,8 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("p", null, "Total " + (0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)($props.meeting.attendees.guests + $props.meeting.attendees.members), 1
   /* TEXT */
   ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createVNode)(_component_Link, {
-    href: _ctx.route('meeting.show', [$props.meeting.type, $props.meeting.identifier])
+    href: _ctx.route('meeting.show', [$props.meeting.type, $props.meeting.identifier]),
+    "class": "text-teal-500"
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_8];
