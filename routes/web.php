@@ -4,7 +4,6 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{AuthController,DashboardController,ZoomController,MemberController,MeetingController};
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 //authentication
 Route::get('/login',[AuthController::class,'create'])->name('login');

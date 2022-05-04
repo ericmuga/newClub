@@ -23,6 +23,7 @@ class Member extends Model
 
         protected $fillable=['name','email','phone','gender','field_id','club_id','rotary_number'];
 
+
         public function club()
         {
             return $this->belongsTo(Club::class);

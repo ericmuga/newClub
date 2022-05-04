@@ -17,9 +17,9 @@ class Instance extends Model
        //get all attendees for that instance, group by type
 
        return DB::table('attendables')
-         ->where('attendable_type','instance')
-         ->where('attendable_id',$this->id)
-         ->count();
+                ->where('attendable_type','instance')
+                ->where('attendable_id',$this->id)
+                ->count();
 
     }
 
