@@ -5,7 +5,8 @@
 
           </div>
           <div class="col-span-4 -mt-6 text-center">
-                    <Pagination :links=meetings.links :prefix="`meetings`"/>
+                    <Pagination v-if="meetings.data.length!=0" :links=meetings.links :prefix="`meetings`"/>
+                    <div v-else class="col-span-4 py-6 mt-6 text-center">No Meetings were found</div>
             </div>
            <transition
                 appear
@@ -14,15 +15,17 @@
                 @enter="enter"
             >
 
-            <div class="grid grid-cols-5">
+            <div class="grid grid-cols-5" >
                 <div class="col-span-1 gap-2 mt-5" v-for="meeting in meetings.data" :key="meeting.identifier">
                     <MeetingCard :meeting="meeting" class="mx-1"/>
                 </div>
 
             </div>
+            <div >
+            </div>
            </transition>
            <div class="col-span-4 -mt-6 text-center">
-                    <Pagination :links=meetings.links :prefix="`meetings`"/>
+                    <Pagination v-if="meetings.data.length!=0" :links=meetings.links :prefix="`meetings`"/>
             </div>
     </div>
 </template>

@@ -32,8 +32,9 @@ class MeetingController extends Controller
                                                         ->when($request->input('startDate'),fn($q,$startDate)=>($q->whereDate('date','>=',$startDate)))
                                                         ->when($request->input('endDate'),fn($q,$endDate)=>($q->whereDate('date','<=',$endDate)))
                                                         ->orderby('date','desc')
-                                                        ->get());
 
+                                                      ->get());
+$data=collect([]);
         if ($request->input('type'))
         {
             switch ($request->type)
