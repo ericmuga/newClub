@@ -28,7 +28,15 @@ export default {
        const links=props.links
        const prefix= ref(props.prefix)
        const url=ref(props.url);
-       const refinedURL=(link)=>(`${prefix.value}${link}`)
+
+    //    const trimLink=(l)=>(str.substring(1))
+       function refinedURL(link)
+           {
+                                    let str = new String(link)
+                                    if(str.charAt(0)=='/') str=str.substring(1)
+                                    return `${prefix.value}${str}`
+
+           }
 
         return {
               refinedURL

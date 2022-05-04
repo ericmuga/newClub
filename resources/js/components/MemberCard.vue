@@ -20,15 +20,15 @@
                     <path d="M10 15l-5.878 3.09 1.123-6.545L.489 6.91l6.572-.955L10 0l2.939 5.955 6.572.955-4.756 4.635 1.123 6.545z"/>
                 </svg> -->
                 <!-- <DocumentReportIcon/> -->
-                <img src="/images/zoom.png" class="w-6 h-4 rounded-full" alt="">
+                <img src="/images/zoom.png" class="w-10 h-6 rounded-full" alt="">
                 <div>{{member.meetings.makeup}}</div>
                 </li>
                 <li class="flex flex-col items-center justify-between">
-                <img src="/images/makeup.png" class="w-6 h-4 rounded-full" alt="">
+                <img src="/images/makeup.png" class="w-10 h-6 rounded-full" alt="">
                 <div>{{member.meetings.zoom}}</div>
                 </li>
                 <li class="flex flex-col items-center justify-around">
-                 <img src="/images/physicalmeeting.png" class="w-4 h-4 rounded-full" alt="">
+                 <img src="/images/physicalmeeting.png" class="w-8 h-8 rounded-full" alt="">
                 <div>{{member.meetings.physical}}</div>
                 </li>
             </ul>

@@ -20159,11 +20159,13 @@ __webpack_require__.r(__webpack_exports__);
     //    const resource= props.resource.value
     var links = props.links;
     var prefix = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(props.prefix);
-    var url = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(props.url);
+    var url = (0,vue__WEBPACK_IMPORTED_MODULE_0__.ref)(props.url); //    const trimLink=(l)=>(str.substring(1))
 
-    var refinedURL = function refinedURL(link) {
-      return "".concat(prefix.value).concat(link);
-    };
+    function refinedURL(link) {
+      var str = new String(link);
+      if (str.charAt(0) == '/') str = str.substring(1);
+      return "".concat(prefix.value).concat(str);
+    }
 
     return {
       refinedURL: refinedURL
@@ -21148,12 +21150,7 @@ var _hoisted_3 = {
 var _hoisted_4 = {
   "class": "grid grid-cols-5"
 };
-
-var _hoisted_5 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, null, -1
-/* HOISTED */
-);
-
-var _hoisted_6 = {
+var _hoisted_5 = {
   "class": "col-span-4 -mt-6 text-center"
 };
 function render(_ctx, _cache, $props, $setup, $data, $options) {
@@ -21188,12 +21185,12 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         , ["meeting"])]);
       }), 128
       /* KEYED_FRAGMENT */
-      ))]), _hoisted_5];
+      ))])];
     }),
     _: 1
     /* STABLE */
 
-  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [$props.meetings.data.length != 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Pagination"], {
+  }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [$props.meetings.data.length != 0 ? ((0,vue__WEBPACK_IMPORTED_MODULE_0__.openBlock)(), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createBlock)($setup["Pagination"], {
     key: 0,
     links: $props.meetings.links,
     prefix: "meetings"
@@ -22209,7 +22206,7 @@ var _hoisted_10 = {
 
 var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/images/zoom.png",
-  "class": "w-6 h-4 rounded-full",
+  "class": "w-10 h-6 rounded-full",
   alt: ""
 }, null, -1
 /* HOISTED */
@@ -22221,7 +22218,7 @@ var _hoisted_12 = {
 
 var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/images/makeup.png",
-  "class": "w-6 h-4 rounded-full",
+  "class": "w-10 h-6 rounded-full",
   alt: ""
 }, null, -1
 /* HOISTED */
@@ -22233,7 +22230,7 @@ var _hoisted_14 = {
 
 var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("img", {
   src: "/images/physicalmeeting.png",
-  "class": "w-4 h-4 rounded-full",
+  "class": "w-8 h-8 rounded-full",
   alt: ""
 }, null, -1
 /* HOISTED */

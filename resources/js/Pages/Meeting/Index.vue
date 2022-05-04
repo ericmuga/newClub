@@ -21,8 +21,7 @@
                 </div>
 
             </div>
-            <div >
-            </div>
+
            </transition>
            <div class="col-span-4 -mt-6 text-center">
                     <Pagination v-if="meetings.data.length!=0" :links=meetings.links :prefix="`meetings`"/>
