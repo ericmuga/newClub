@@ -288,7 +288,7 @@
                         </div>
                         <div>
                             <div class="flex items-center mb-3 space-x-2 font-semibold leading-8 text-gray-900">
-                                <span clas="text-green-500">
+                                <!-- <span clas="text-green-500">
                                     <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                         stroke="currentColor">
                                         <path fill="#fff" d="M12 14l9-5-9-5-9 5 9 5z" />
@@ -297,10 +297,10 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222" />
                                     </svg>
-                                </span>
-                                <span class="tracking-wide">Education</span>
+                                </span> -->
+                                <span class="tracking-wide">Guests</span>
                             </div>
-                            <ul class="space-y-2 list-inside">
+                            <!-- <ul class="space-y-2 list-inside">
                                 <li>
                                     <div class="text-teal-600">Masters Degree in Oxford</div>
                                     <div class="text-xs text-gray-500">March 2020 - Now</div>
@@ -309,7 +309,7 @@
                                     <div class="text-teal-600">Bachelors Degreen in LPU</div>
                                     <div class="text-xs text-gray-500">March 2020 - Now</div>
                                 </li>
-                            </ul>
+                            </ul> -->
                         </div>
                     </div>
                     <!-- End of Experience and education grid -->

@@ -11,7 +11,7 @@
                     <SearchBox :model="`members.list`" />
                 </div>
 
-                <div class="flex flex-row justify-start text-center">
+                <div class="flex flex-row justify-center my-3 text-center">
                     <Form @submit.prevent="uploadMembers" class="flex flex-row ">
                         <FileUpload mode="basic"
                                 name="demo[]"

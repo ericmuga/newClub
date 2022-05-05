@@ -21702,38 +21702,9 @@ var _hoisted_29 = {
 
 var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
   "class": "flex items-center mb-3 space-x-2 font-semibold leading-8 text-gray-900"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
-  clas: "text-green-500"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("svg", {
-  "class": "h-5",
-  xmlns: "http://www.w3.org/2000/svg",
-  fill: "none",
-  viewBox: "0 0 24 24",
-  stroke: "currentColor"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  fill: "#fff",
-  d: "M12 14l9-5-9-5-9 5 9 5z"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  fill: "#fff",
-  d: "M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z"
-}), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("path", {
-  "stroke-linecap": "round",
-  "stroke-linejoin": "round",
-  "stroke-width": "2",
-  d: "M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"
-})])]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <span clas=\"text-green-500\">\n                                    <svg class=\"h-5\" xmlns=\"http://www.w3.org/2000/svg\" fill=\"none\" viewBox=\"0 0 24 24\"\n                                        stroke=\"currentColor\">\n                                        <path fill=\"#fff\" d=\"M12 14l9-5-9-5-9 5 9 5z\" />\n                                        <path fill=\"#fff\"\n                                            d=\"M12 14l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14z\" />\n                                        <path stroke-linecap=\"round\" stroke-linejoin=\"round\" stroke-width=\"2\"\n                                            d=\"M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222\" />\n                                    </svg>\n                                </span> "), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("span", {
   "class": "tracking-wide"
-}, "Education")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("ul", {
-  "class": "space-y-2 list-inside"
-}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "text-teal-600"
-}, "Masters Degree in Oxford"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "text-xs text-gray-500"
-}, "March 2020 - Now")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("li", null, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "text-teal-600"
-}, "Bachelors Degreen in LPU"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
-  "class": "text-xs text-gray-500"
-}, "March 2020 - Now")])])], -1
+}, "Guests")]), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <ul class=\"space-y-2 list-inside\">\n                                <li>\n                                    <div class=\"text-teal-600\">Masters Degree in Oxford</div>\n                                    <div class=\"text-xs text-gray-500\">March 2020 - Now</div>\n                                </li>\n                                <li>\n                                    <div class=\"text-teal-600\">Bachelors Degreen in LPU</div>\n                                    <div class=\"text-xs text-gray-500\">March 2020 - Now</div>\n                                </li>\n                            </ul> ")], -1
 /* HOISTED */
 );
 
@@ -22181,7 +22152,7 @@ var _hoisted_4 = {
   "class": "flex flex-row justify-center text-center"
 };
 var _hoisted_5 = {
-  "class": "flex flex-row justify-start text-center"
+  "class": "flex flex-row justify-center mt-2 text-center"
 };
 var _hoisted_6 = {
   href: "members/export"
@@ -22350,7 +22321,7 @@ var _hoisted_3 = {
   "class": "flex flex-row justify-center my-3 text-center"
 };
 var _hoisted_4 = {
-  "class": "flex flex-row justify-start text-center"
+  "class": "flex flex-row justify-center my-3 text-center"
 };
 var _hoisted_5 = {
   href: "members/export"

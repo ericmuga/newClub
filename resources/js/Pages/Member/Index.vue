@@ -12,7 +12,7 @@
                 <div class="flex flex-row justify-center text-center">
                     <SearchBox :model="`members.index`" />
                 </div>
-                <div class="flex flex-row justify-start text-center">
+                <div class="flex flex-row justify-center mt-2 text-center">
                     <Form @submit.prevent="uploadMembers" class="flex flex-row ">
                         <FileUpload mode="basic"
                                 name="demo[]"
